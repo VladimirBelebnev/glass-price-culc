@@ -1,0 +1,158 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round:regular);
+
+html {
+    font-family: "Varela Round";
+}
+
+.content {
+    max-width: 970px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.step {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h3 {
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+    &__title {
+        font-size: 24px;
+    }
+    &__descr {
+        font-size: 16px;
+    }
+    &__wrap {
+        padding-top: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 75px 50px;
+    }
+    .img__wrap {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        img {
+            max-height: 212px;
+            opacity: 1;
+            transition: opacity .3s;
+        }
+        img:hover {
+            opacity: 0.8;
+        }
+        span {
+            display: flex;
+            gap: 5px;
+            font-size: 14px;
+        }
+    }
+    .two__wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .size__title {
+        font-size: 14px;
+    }
+    .size__select {
+        display: block;
+        margin-top: 10px;
+        padding: 5px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .three__wrap {
+        display: block;
+    }
+
+    &__settings {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    &__type {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .type__name {
+        font-size: 16px;
+        margin: 0;
+    }
+    .type__descr {
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+    }
+    .type__wrap {
+        margin: 0;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        label {
+            display: flex;
+            gap: 5px;
+            line-height: 100%;
+        }
+    }
+    .type__radio {
+        font-size: 12px;
+        padding: 0;
+        border: none;
+        color: #000;
+        background: inherit;
+    }
+    .type__radio:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .type__select {
+        font-size: 12px;
+        width: 50px;
+    }
+    .quantity {
+        display: flex;
+        gap: 5px;
+    }
+    .type__quantity {
+        font-size: 12px;
+        margin: 0;
+    }
+    .trans {
+        font-size: 6px;
+    }
+    .btn {
+        &__wrap {
+            padding-top: 50px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        &__prev, &__next {
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: 1px solid #000;
+            opacity: 1;
+            transition: opacity .3s;
+        }
+        &__prev:hover,
+        &__next:hover {
+            opacity: 0.85;
+        }
+    }
+    &-3__title {
+        margin-bottom: 0;
+    }
+}
