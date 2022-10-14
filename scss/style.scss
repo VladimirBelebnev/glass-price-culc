@@ -135,6 +135,28 @@ html {
     .trans {
         font-size: 6px;
     }
+    .three__wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+    }
+    .step__card {
+        position: sticky;
+        top: 50px;
+        right: 0;
+        width: 195px;
+        border: 1px solid #d6d6d6;
+        background: #efefef;
+        padding: 10px;
+        p {
+            margin: 0;
+            font-size: 12px;
+        }
+        #card-specif {
+            text-decoration: underline;
+        }
+    }
     .btn {
         &__wrap {
             padding-top: 50px;
