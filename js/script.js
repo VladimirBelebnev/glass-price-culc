@@ -97,7 +97,7 @@ const calc = () => {
 
     const diameterIncSelect = document.querySelector('#diameter-inches');
 
-    heightIncSelect.addEventListener('change', () => {
+    diameterIncSelect.addEventListener('change', () => {
         diameterInc = 0;
         diameterInc = diameterIncSelect.value;
     });
@@ -130,7 +130,6 @@ const calc = () => {
             case 3:
                 stepThree.style.display = 'block';
                 choseShapeFunc(choseShape);
-
                 const cardPrice = document.querySelector('#card-price b');
 
                 if (choseShape == 'Circle') {
@@ -143,18 +142,230 @@ const calc = () => {
                 if (choseShape == "Circle" || choseShape == "Oval" || choseShape == "Arch" || choseShape == "Racetrack oval" || choseShape == "Semicircle") {
                     price = 43.08;
 
-                    // if (heightInc) {
-                    //     price += heightInc * ft;
-                    // } else if (diameterFra) {
-                    //     price += heightFra * fraFt;
-                    // }
+                    if (heightFra == '1/16') {
+                        heightFra = 0.0625;
+                    } else if (heightFra == '1/8') {
+                        heightFra = 0.125;
+                    } else if (heightFra == '1/8') {
+                        heightFra = 0.125;
+                    } else if (heightFra == '3/16') {
+                        heightFra = 0.1875;
+                    } else if (heightFra == '1/4') {
+                        heightFra = 0.25;
+                    } else if (heightFra == '5/16') {
+                        heightFra = 0.3125;
+                    } else if (heightFra == '3/8') {
+                        heightFra = 0.375;
+                    } else if (heightFra == '7/16') {
+                        heightFra = 0.4375;
+                    } else if (heightFra == '1/2') {
+                        heightFra = 0.5;
+                    } else if (heightFra == '9/16') {
+                        heightFra = 0.5625;
+                    } else if (heightFra == '5/8') {
+                        heightFra = 0.625;
+                    } else if (heightFra == '11/16') {
+                        heightFra = 0.6875;
+                    } else if (heightFra == '3/4') {
+                        heightFra = 0.75;
+                    } else if (heightFra == '13/16') {
+                        heightFra = 0.8125;
+                    } else if (heightFra == '7/8') {
+                        heightFra = 0.875;
+                    } else if (heightFra == '15/16') {
+                        heightFra = 0.9375;
+                    } else {
+                        heightFra = 0;
+                    }
+
+                    if (heightInc) {
+                        price += +heightInc * ft;
+                    }
+                    
+                    if (heightFra) {
+                        price += +heightFra * fraFt;
+                    }
+
+                    if (widthFra == '1/16') {
+                        widthFra = 0.0625;
+                    } else if (widthFra == '1/8') {
+                        widthFra = 0.125;
+                    } else if (widthFra == '1/8') {
+                        widthFra = 0.125;
+                    } else if (widthFra == '3/16') {
+                        widthFra = 0.1875;
+                    } else if (widthFra == '1/4') {
+                        widthFra = 0.25;
+                    } else if (widthFra == '5/16') {
+                        widthFra = 0.3125;
+                    } else if (widthFra == '3/8') {
+                        widthFra = 0.375;
+                    } else if (widthFra == '7/16') {
+                        widthFra = 0.4375;
+                    } else if (widthFra == '1/2') {
+                        widthFra = 0.5;
+                    } else if (widthFra == '9/16') {
+                        widthFra = 0.5625;
+                    } else if (widthFra == '5/8') {
+                        widthFra = 0.625;
+                    } else if (widthFra == '11/16') {
+                        widthFra = 0.6875;
+                    } else if (widthFra == '3/4') {
+                        widthFra = 0.75;
+                    } else if (heightFra == '13/16') {
+                        widthFra = 0.8125;
+                    } else if (widthFra == '7/8') {
+                        widthFra = 0.875;
+                    } else if (widthFra == '15/16') {
+                        widthFra = 0.9375;
+                    } else {
+                        widthFra = 0;
+                    }
+
+                    if (widthInc) {
+                        price += +widthInc * ft;
+                    }
+
+                    if (widthFra) {
+                        price += +widthFra * fraFt;
+                    }
+
+                    if (diameterFra == '1/16') {
+                        diameterFra = 0.0625;
+                    } else if (diameterFra == '1/8') {
+                        diameterFra = 0.125;
+                    } else if (diameterFra == '1/8') {
+                        diameterFra = 0.125;
+                    } else if (diameterFra == '3/16') {
+                        diameterFra = 0.1875;
+                    } else if (diameterFra == '1/4') {
+                        diameterFra = 0.25;
+                    } else if (diameterFra == '5/16') {
+                        diameterFra = 0.3125;
+                    } else if (diameterFra == '3/8') {
+                        diameterFra = 0.375;
+                    } else if (diameterFra == '7/16') {
+                        diameterFra = 0.4375;
+                    } else if (diameterFra == '1/2') {
+                        diameterFra = 0.5;
+                    } else if (diameterFra == '9/16') {
+                        diameterFra = 0.5625;
+                    } else if (diameterFra == '5/8') {
+                        diameterFra = 0.625;
+                    } else if (diameterFra == '11/16') {
+                        diameterFra = 0.6875;
+                    } else if (diameterFra == '3/4') {
+                        diameterFra = 0.75;
+                    } else if (diameterFra == '13/16') {
+                        diameterFra = 0.8125;
+                    } else if (diameterFra == '7/8') {
+                        diameterFra = 0.875;
+                    } else if (diameterFra == '15/16') {
+                        diameterFra = 0.9375;
+                    } else {
+                        diameterFra = 0;
+                    }
+                    console.log(diameterInc)
+                    if (diameterInc) {
+                        price += +diameterInc * ft;
+                    }
+
+                    if (diameterFra) {
+                        price += +diameterFra * fraFt;
+                    }
 
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
                 } else {
                     price = 33.30;
+
+                    if (heightFra == '1/16') {
+                        heightFra = 0.0625;
+                    } else if (heightFra == '1/8') {
+                        heightFra = 0.125;
+                    } else if (heightFra == '1/8') {
+                        heightFra = 0.125;
+                    } else if (heightFra == '3/16') {
+                        heightFra = 0.1875;
+                    } else if (heightFra == '1/4') {
+                        heightFra = 0.25;
+                    } else if (heightFra == '5/16') {
+                        heightFra = 0.3125;
+                    } else if (heightFra == '3/8') {
+                        heightFra = 0.375;
+                    } else if (heightFra == '7/16') {
+                        heightFra = 0.4375;
+                    } else if (heightFra == '1/2') {
+                        heightFra = 0.5;
+                    } else if (heightFra == '9/16') {
+                        heightFra = 0.5625;
+                    } else if (heightFra == '5/8') {
+                        heightFra = 0.625;
+                    } else if (heightFra == '11/16') {
+                        heightFra = 0.6875;
+                    } else if (heightFra == '3/4') {
+                        heightFra = 0.75;
+                    } else if (heightFra == '13/16') {
+                        heightFra = 0.8125;
+                    } else if (heightFra == '7/8') {
+                        heightFra = 0.875;
+                    } else if (heightFra == '15/16') {
+                        heightFra = 0.9375;
+                    } else {
+                        heightFra = 0;
+                    }
+
+                    if (heightInc) {
+                        price += +heightInc * ft;
+                    }
+                    if (heightFra) {
+                        price += +heightFra * fraFt;
+                    }
+
+                    if (widthFra == '1/16') {
+                        widthFra = 0.0625;
+                    } else if (widthFra == '1/8') {
+                        widthFra = 0.125;
+                    } else if (widthFra == '1/8') {
+                        widthFra = 0.125;
+                    } else if (widthFra == '3/16') {
+                        widthFra = 0.1875;
+                    } else if (widthFra == '1/4') {
+                        widthFra = 0.25;
+                    } else if (widthFra == '5/16') {
+                        widthFra = 0.3125;
+                    } else if (widthFra == '3/8') {
+                        widthFra = 0.375;
+                    } else if (widthFra == '7/16') {
+                        widthFra = 0.4375;
+                    } else if (widthFra == '1/2') {
+                        widthFra = 0.5;
+                    } else if (widthFra == '9/16') {
+                        widthFra = 0.5625;
+                    } else if (widthFra == '5/8') {
+                        widthFra = 0.625;
+                    } else if (widthFra == '11/16') {
+                        widthFra = 0.6875;
+                    } else if (widthFra == '3/4') {
+                        widthFra = 0.75;
+                    } else if (heightFra == '13/16') {
+                        widthFra = 0.8125;
+                    } else if (widthFra == '7/8') {
+                        widthFra = 0.875;
+                    } else if (widthFra == '15/16') {
+                        widthFra = 0.9375;
+                    } else {
+                        widthFra = 0;
+                    }
+
+                    if (widthInc) {
+                        price += +widthInc * ft;
+                    }
+                    if (widthFra) {
+                        price += +widthFra * fraFt;
+                    }
+
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
                 }
-                
                 break;
         }
 
