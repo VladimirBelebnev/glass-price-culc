@@ -6,27 +6,31 @@ const calc = () => {
     let fraFt = 0.36;
 
     // цена за толщина
-    let thickness1 = 0.105;
-    let thickness2 = 0.207;
-    let thickness3 = 0.785;
-    let thickness4 = 1.137;
-    let thickness5 = 2.062;
-    let thickness6 = 3.116;
+    let thick;
+    let thickness1 = 1;
+    let thickness2 = 1.105;
+    let thickness3 = 1.207;
+    let thickness4 = 1.785;
+    let thickness5 = 2.137;
+    let thickness6 = 3.062;
+    let thickness7 = 4.116;
 
     // цена за тип
-    let ultraClear = 0.75;
-    let clearSandBlasted = 0.9;
+    let type;
+    let clear = 1;
+    let ultraClear = 1.67;
+    let clearSandBlasted = 1.9;
     let painted = 4.3;
-    let lowIronSandBlasted = 2.485;
-    let bronze = 0.75;
-    let grey = 0.75;
-    let acidEtchedRegular = 0.67;
-    let acidEtchedLowIron = 0.85;
-    let clearLaminated = 0.62;
-    let whiteLaminated = 0.9;
-    let oneWayMirror = 0.6;
-    let lowIronBlasted = 0.5;
-    let superGrey = 0.67;
+    let lowIronSandBlasted = 1.97;
+    let bronze = 1.3;
+    let grey = 1.3;
+    let acidEtchedRegular = 1.67;
+    let acidEtchedLowIron = 1.82;
+    let clearLaminated = 1.58;
+    let whiteLaminated = 1.87;
+    let oneWayMirror = 1.63;
+    let superGrey = 1.47;
+    // let lowIronBlasted = 1.5;
 
     // начальная цена для разного вида стекла
     // let square = 33.30;
@@ -51,8 +55,6 @@ const calc = () => {
     let diameterFra;
 
     let choseShape = 'Rectangle';
-    let thick = "1/8";
-    let type = "Clear";
     let ending = "Seamed Edge";
     let strength = "Annealed Glass";
     let quantity = 1;
@@ -67,33 +69,27 @@ const calc = () => {
           btnPrev = document.querySelector('#prev'),
           step = document.querySelector('#step');
 
-    const widthIncSelect = document.querySelector('#width-inches');
+    const generateSelect = (widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect) => {
+        widthIncSelect.addEventListener('change', () => {
+            widthInc = 0;
+            widthInc = widthIncSelect.value;
+        });
 
-    widthIncSelect.addEventListener('change', () => {
-        widthInc = 0;
-        widthInc = widthIncSelect.value;
-    });
+        widthFraSelect.addEventListener('change', () => {
+            widthFra = 0;
+            widthFra = widthFraSelect.value;
+        });
 
-    const widthFraSelect = document.querySelector('#width-fraction');
+        heightIncSelect.addEventListener('change', () => {
+            heightInc = 0;
+            heightInc = heightIncSelect.value;
+        });
 
-    widthFraSelect.addEventListener('change', () => {
-        widthFra = 0;
-        widthFra = widthFraSelect.value;
-    });
-
-    const heightIncSelect = document.querySelector('#height-inches');
-
-    heightIncSelect.addEventListener('change', () => {
-        heightInc = 0;
-        heightInc = heightIncSelect.value;
-    });
-
-    const heightFraSelect = document.querySelector('#height-fraction');
-
-    heightFraSelect.addEventListener('change', () => {
-        heightFra = 0;
-        heightFra = heightFraSelect.value;
-    });
+        heightFraSelect.addEventListener('change', () => {
+            heightFra = 0;
+            heightFra = heightFraSelect.value;
+        });
+    }
 
     const diameterIncSelect = document.querySelector('#diameter-inches');
 
@@ -120,6 +116,71 @@ const calc = () => {
             step.style.display = 'none';
         });
 
+        if (index == 1) {
+            btnPrev.style.display = 'none';
+        } else if (index == 2) {
+            if (choseShape == 'Rectangle') {
+                let widthIncSelect = document.querySelector('#width-inches-rectangle');
+                let widthFraSelect = document.querySelector('#width-fraction-rectangle');
+                let heightIncSelect = document.querySelector('#height-inches-rectangle');
+                let heightFraSelect = document.querySelector('#height-fraction-rectangle');
+
+                generateSelect(widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect);
+            } else if (choseShape == 'Square') {
+                let widthIncSelect = document.querySelector('#width-inches-square');
+                let widthFraSelect = document.querySelector('#width-fraction-square');
+                let heightIncSelect = document.querySelector('#height-inches-square');
+                let heightFraSelect = document.querySelector('#height-fraction-square');
+
+                generateSelect(widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect);
+            } else if (choseShape == 'Oval') {
+                let widthIncSelect = document.querySelector('#width-inches-oval');
+                let widthFraSelect = document.querySelector('#width-fraction-oval');
+                let heightIncSelect = document.querySelector('#height-inches-oval');
+                let heightFraSelect = document.querySelector('#height-fraction-oval');
+
+                generateSelect(widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect);
+            } else if (choseShape == 'Arch') {
+                let widthIncSelect = document.querySelector('#width-inches-oval');
+                let widthFraSelect = document.querySelector('#width-fraction-oval');
+                let heightIncSelect = document.querySelector('#height-inches-oval');
+                let heightFraSelect = document.querySelector('#height-fraction-oval');
+
+                generateSelect(widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect);
+            } else if (choseShape == 'Arch') {
+                let widthIncSelect = document.querySelector('#width-inches-arch');
+                let widthFraSelect = document.querySelector('#width-fraction-arch');
+                let heightIncSelect = document.querySelector('#height-inches-arch');
+                let heightFraSelect = document.querySelector('#height-fraction-arch');
+
+                generateSelect(widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect);
+            } else if (choseShape == 'Racetrack') {
+                let widthIncSelect = document.querySelector('#width-inches-racetrack');
+                let widthFraSelect = document.querySelector('#width-fraction-racetrack');
+                let heightIncSelect = document.querySelector('#height-inches-racetrack');
+                let heightFraSelect = document.querySelector('#height-fraction-racetrack');
+
+                generateSelect(widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect);
+            } else if (choseShape == 'Semicircle') {
+                let widthIncSelect = document.querySelector('#width-inches-semicircle');
+                let widthFraSelect = document.querySelector('#width-fraction-semicircle');
+                let heightIncSelect = document.querySelector('#height-inches-semicircle');
+                let heightFraSelect = document.querySelector('#height-fraction-semicircle');
+
+                generateSelect(widthIncSelect, widthFraSelect, heightIncSelect, heightFraSelect);
+            } 
+
+            widthFra = 0;
+            heightFra = 0;
+
+            btnPrev.style.display = 'block';
+        } else if (index == 4) {
+            btnNext.style.display = 'none';
+        } else {
+            btnNext.style.display = 'block';
+            btnPrev.style.display = 'block';
+        }
+
         switch (index) {
             case 1:
                 stepOne.style.display = 'block';
@@ -136,6 +197,7 @@ const calc = () => {
                     document.querySelector('#card-width-hight').innerHTML = '';
                     document.querySelector('#card-diameter').innerHTML = `Diameter: ${diameterInc ? diameterInc : 2} - ${diameterFra ? diameterFra : 0}`;
                 } else {
+                    document.querySelector('#card-diameter').innerHTML = '';
                     document.querySelector('#card-width-hight').innerHTML = `H x W: ${heightInc ? heightInc : 2}-${heightFra ? heightFra : 0} x ${widthInc ? widthInc : 2}-${widthFra ? widthFra : 0}`;
                 }
 
@@ -265,13 +327,17 @@ const calc = () => {
                     } else {
                         diameterFra = 0;
                     }
-                    console.log(diameterInc)
+
                     if (diameterInc) {
                         price += +diameterInc * ft;
                     }
 
                     if (diameterFra) {
                         price += +diameterFra * fraFt;
+                    }
+
+                    if (thick) {
+                        price = price * thick;
                     }
 
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
@@ -364,18 +430,17 @@ const calc = () => {
                         price += +widthFra * fraFt;
                     }
 
+                    if (thick) {
+                        price = price * thick;
+                    }
+
+                    if (type) {
+                        price = price * type;
+                    }
+
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
                 }
                 break;
-        }
-
-        if (index == 1) {
-            btnPrev.style.display = 'none';
-        } else if (index == 4) {
-            btnNext.style.display = 'none';
-        }  else  {
-            btnNext.style.display = 'block';
-            btnPrev.style.display = 'block';
         }
 
         if (index == 3) {
@@ -482,46 +547,73 @@ const calc = () => {
                 type.style.display = 'flex';
             });
 
-            thick = thickness;
-
             document.querySelector('#card-thickness').innerHTML = `Thickness: ${thickness}`;
 
-            if (thickness == '1/8' || thickness == '3/16') {
+            if (thickness == '1/8') {
                 allType.forEach(type => {
                     if (type.dataset.xs == "true" || type.dataset.s == "true" || type.dataset.m == "true" || type.dataset.l == "true" || type.dataset.xl == "true") {
                         type.style.display = 'none';
                     }
                 });
+                thick = thickness1;
+
+                showStepContent(3);
+            } else if (thickness == '3/16') {
+                allType.forEach(type => {
+                    if (type.dataset.xs == "true" || type.dataset.s == "true" || type.dataset.m == "true" || type.dataset.l == "true" || type.dataset.xl == "true") {
+                        type.style.display = 'none';
+                    }
+                });
+                thick = thickness2;
+
+                showStepContent(3);
             } else if (thickness == '1/4') {
                 allType.forEach(type => {
                     if (type.dataset.xs == "true") {
                         type.style.display = 'none';
                     }
                 });
+                thick = thickness3;
+
+                showStepContent(3);
             } else if (thickness == '3/8') {
                 allType.forEach(type => {
                     if (type.dataset.s == "true") {
                         type.style.display = 'none';
                     }
                 });
+                thick = thickness4;
+
+                showStepContent(3);
             } else if (thickness == '1/2') {
                 allType.forEach(type => {
                     if (type.dataset.m == "true") {
                         type.style.display = 'none';
                     }
                 });
+
+                thick = thickness5;
+
+                showStepContent(3);
             } else if (thickness == '5/8') {
                 allType.forEach(type => {
                     if (type.dataset.l == "true") {
                         type.style.display = 'none';
                     }
                 });
+
+                thick = thickness6;
+
+                showStepContent(3);
             } else if (thickness == '3/4') {
                 allType.forEach(type => {
                     if (type.dataset.xl == "true") {
                         type.style.display = 'none';
                     }
                 });
+                thick = thickness7;
+
+                showStepContent(3);
             }
         });
     });
@@ -535,7 +627,36 @@ const calc = () => {
             if (input.checked) {
                 type = input.value;
 
-                document.querySelector('#card-type').innerHTML = `Type: ${input.value}`;
+                if (input.value == 'Bronze') {
+                    type = bronze;
+                } else if (input.value == 'Grey') {
+                    type = grey;
+                } else if (input.value == 'Ultra Clear (Low-Iron)') {
+                    type = ultraClear;
+                } else if (input.value == 'Acid Etched Regular') {
+                    type = acidEtchedRegular;
+                } else if (input.value == 'Acid Etched Low-Iron (Velour)') {
+                    type = acidEtchedLowIron;
+                } else if (input.value == 'Clear Laminated (non temperable)') {
+                    type = clearLaminated;
+                } else if (input.value == 'White Laminated (non temperable)') {
+                    type = whiteLaminated;
+                } else if (input.value == 'Clear Sand-Blasted (one side)') {
+                    type = clearSandBlasted;
+                } else if (input.value == 'Custom Back Painted') {
+                    type = painted;
+                } else if (input.value == 'One-Way Mirror') {
+                    type = oneWayMirror;
+                } else if (input.value == 'Low-Iron Sand-Blasted (one side)') {
+                    type = lowIronSandBlasted;
+                } else if (input.value == 'Super Gray') {
+                    type = superGrey;
+                } else {
+                    type = clear;
+                }
+
+                document.querySelector('#card-type').innerHTML = `Type: ${input.value ? input.value : "Clear"}`;
+                showStepContent(3);
             }
         });
     });
