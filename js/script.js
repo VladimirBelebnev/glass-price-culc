@@ -340,6 +340,10 @@ const calc = () => {
                         price = price * thick;
                     }
 
+                    if (type) {
+                        price = price * type;
+                    } 
+
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
                 } else {
                     price = 33.30;
@@ -436,7 +440,7 @@ const calc = () => {
 
                     if (type) {
                         price = price * type;
-                    }
+                    } 
 
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
                 }
