@@ -1,49 +1,14 @@
 const calc = () => {
     let index = 1;
 
-    // цена за футы
-    let ft = 0.18;
-    let fraFt = 0.36;
-
     // цена за толщина
     let thick;
-    let thickness1 = 1;
-    let thickness2 = 1.105;
-    let thickness3 = 1.207;
-    let thickness4 = 1.785;
-    let thickness5 = 2.137;
-    let thickness6 = 3.062;
-    let thickness7 = 4.116;
-
+    
     // цена за тип
     let type;
-    let clear = 1;
-    let ultraClear = 1.67;
-    let clearSandBlasted = 1.9;
-    let painted = 4.3;
-    let lowIronSandBlasted = 1.97;
-    let bronze = 1.3;
-    let grey = 1.3;
-    let acidEtchedRegular = 1.67;
-    let acidEtchedLowIron = 1.82;
-    let clearLaminated = 1.58;
-    let whiteLaminated = 1.87;
-    let oneWayMirror = 1.63;
-    let superGrey = 1.47;
-    // let lowIronBlasted = 1.5;
-
-    // начальная цена для разного вида стекла
-    // let square = 33.30;
-    // let rectangle = 33.30;
-    // let circle = 43.08;
-    // let oval = 43.08;
-    // let arch = 43.08;
-    // let racetrack = 43.08;
-    // let semicircle = 43.08;
 
     // края
-    let flatPolishedEdge = 0.019;
-    let beveledEdge = 0.043
+    let ending;
 
     let widthInc;
     let widthFra;
@@ -55,9 +20,11 @@ const calc = () => {
     let diameterFra;
 
     let choseShape = 'Rectangle';
-    let ending = "Seamed Edge";
     let strength = "Annealed Glass";
     let quantity = 1;
+    let thickness = "1/16";
+    let choseType = 'Clear';
+    let choseEnding = "Seamed Edge";
 
     let price = 0;
 
@@ -65,6 +32,7 @@ const calc = () => {
           stepOne = document.querySelector('.step-1'),
           stepTwo = document.querySelector('.step-2'),
           stepThree = document.querySelector('.step-3'),
+          stepFour = document.querySelector('.step-4'),
           btnNext = document.querySelector('#next'),
           btnPrev = document.querySelector('#prev'),
           step = document.querySelector('#step');
@@ -202,7 +170,7 @@ const calc = () => {
                 }
 
                 if (choseShape == "Circle" || choseShape == "Oval" || choseShape == "Arch" || choseShape == "Racetrack oval" || choseShape == "Semicircle") {
-                    price = 43.08;
+                    price = priceForRest;
 
                     if (heightFra == '1/16') {
                         heightFra = 0.0625;
@@ -240,14 +208,6 @@ const calc = () => {
                         heightFra = 0;
                     }
 
-                    if (heightInc) {
-                        price += +heightInc * ft;
-                    }
-                    
-                    if (heightFra) {
-                        price += +heightFra * fraFt;
-                    }
-
                     if (widthFra == '1/16') {
                         widthFra = 0.0625;
                     } else if (widthFra == '1/8') {
@@ -282,14 +242,6 @@ const calc = () => {
                         widthFra = 0.9375;
                     } else {
                         widthFra = 0;
-                    }
-
-                    if (widthInc) {
-                        price += +widthInc * ft;
-                    }
-
-                    if (widthFra) {
-                        price += +widthFra * fraFt;
                     }
 
                     if (diameterFra == '1/16') {
@@ -336,6 +288,22 @@ const calc = () => {
                         price += +diameterFra * fraFt;
                     }
 
+                    if (heightInc && widthInc) {
+                        price += (+heightInc * ft) * (+widthInc * ft);
+                    } else if (heightInc) {
+                        price += +heightInc * ft;
+                    } else if (widthInc) {
+                        price += +widthInc * ft;
+                    }
+
+                    if (heightFra && widthFra) {
+                        price += (+heightFra * fraFt) * (+widthFra * fraFt);
+                    } else if (heightFra) {
+                        price += +heightFra * fraFt;
+                    } else if (widthFra) {
+                        price += +widthFra * fraFt;
+                    }
+
                     if (thick) {
                         price = price * thick;
                     }
@@ -344,9 +312,13 @@ const calc = () => {
                         price = price * type;
                     } 
 
+                    if (ending) {
+                        price = price * ending;
+                    }
+
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
                 } else {
-                    price = 33.30;
+                    price = priceForRectangleAndSquare;
 
                     if (heightFra == '1/16') {
                         heightFra = 0.0625;
@@ -382,13 +354,6 @@ const calc = () => {
                         heightFra = 0.9375;
                     } else {
                         heightFra = 0;
-                    }
-
-                    if (heightInc) {
-                        price += +heightInc * ft;
-                    }
-                    if (heightFra) {
-                        price += +heightFra * fraFt;
                     }
 
                     if (widthFra == '1/16') {
@@ -427,10 +392,19 @@ const calc = () => {
                         widthFra = 0;
                     }
 
-                    if (widthInc) {
+                    if (heightInc && widthInc) {
+                        price += (+heightInc * ft) * (+widthInc * ft);
+                    } else if (heightInc) {
+                        price += +heightInc * ft;
+                    } else if (widthInc) {
                         price += +widthInc * ft;
                     }
-                    if (widthFra) {
+
+                    if (heightFra && widthFra) {
+                        price += (+heightFra * fraFt) * (+widthFra * fraFt);
+                    } else if (heightFra) {
+                        price += +heightFra * fraFt;
+                    } else if (widthFra) {
                         price += +widthFra * fraFt;
                     }
 
@@ -442,9 +416,26 @@ const calc = () => {
                         price = price * type;
                     } 
 
+                    if (ending) {
+                        price = price * ending;
+                    }
+
                     cardPrice.innerHTML = `Price: ${price.toFixed(2)}$`;
                 }
                 break;
+            case 4:
+                stepFour.style.display = 'block';
+
+                const priceMessage = document.querySelector('#total-price-textarea');
+                priceMessage.innerHTML = "";
+
+                const diameter = `Diameter: ${diameterInc ? diameterInc : 2} - ${diameterFra ? String(diameterFra) : 0 }`;
+                
+                const HW = `H x W: ${heightInc ? heightInc : 2}-${heightFra ? heightFra : 0} x ${widthInc ? widthInc : 2}-${widthFra ? widthFra : 0}`;
+
+                message = `Price: ${price.toFixed(2)}$\nQuantity: ${quantity}\nShape: ${choseShape}\n${choseShape === "Circle" ? diameter : HW}\nThickness: ${thickness}\nType: ${choseType}\nEnding: ${choseEnding}\nStrength: ${strength}`;
+
+                priceMessage.append(message);
         }
 
         if (index == 3) {
@@ -545,7 +536,7 @@ const calc = () => {
 
     allThickness.forEach(item => {
         item.addEventListener('change', () => {
-            let thickness = item.querySelector('input').value;
+            let thicknessValue = item.querySelector('input').value;
 
             allType.forEach(type => {
                 type.style.display = 'flex';
@@ -553,7 +544,9 @@ const calc = () => {
 
             document.querySelector('#card-thickness').innerHTML = `Thickness: ${thickness}`;
 
-            if (thickness == '1/8') {
+            thickness = thicknessValue;
+
+            if (thicknessValue == '1/8') {
                 allType.forEach(type => {
                     if (type.dataset.xs == "true" || type.dataset.s == "true" || type.dataset.m == "true" || type.dataset.l == "true" || type.dataset.xl == "true") {
                         type.style.display = 'none';
@@ -562,7 +555,7 @@ const calc = () => {
                 thick = thickness1;
 
                 showStepContent(3);
-            } else if (thickness == '3/16') {
+            } else if (thicknessValue == '3/16') {
                 allType.forEach(type => {
                     if (type.dataset.xs == "true" || type.dataset.s == "true" || type.dataset.m == "true" || type.dataset.l == "true" || type.dataset.xl == "true") {
                         type.style.display = 'none';
@@ -571,7 +564,7 @@ const calc = () => {
                 thick = thickness2;
 
                 showStepContent(3);
-            } else if (thickness == '1/4') {
+            } else if (thicknessValue == '1/4') {
                 allType.forEach(type => {
                     if (type.dataset.xs == "true") {
                         type.style.display = 'none';
@@ -580,7 +573,7 @@ const calc = () => {
                 thick = thickness3;
 
                 showStepContent(3);
-            } else if (thickness == '3/8') {
+            } else if (thicknessValue == '3/8') {
                 allType.forEach(type => {
                     if (type.dataset.s == "true") {
                         type.style.display = 'none';
@@ -589,7 +582,7 @@ const calc = () => {
                 thick = thickness4;
 
                 showStepContent(3);
-            } else if (thickness == '1/2') {
+            } else if (thicknessValue == '1/2') {
                 allType.forEach(type => {
                     if (type.dataset.m == "true") {
                         type.style.display = 'none';
@@ -599,7 +592,7 @@ const calc = () => {
                 thick = thickness5;
 
                 showStepContent(3);
-            } else if (thickness == '5/8') {
+            } else if (thicknessValue == '5/8') {
                 allType.forEach(type => {
                     if (type.dataset.l == "true") {
                         type.style.display = 'none';
@@ -609,7 +602,7 @@ const calc = () => {
                 thick = thickness6;
 
                 showStepContent(3);
-            } else if (thickness == '3/4') {
+            } else if (thicknessValue == '3/4') {
                 allType.forEach(type => {
                     if (type.dataset.xl == "true") {
                         type.style.display = 'none';
@@ -629,7 +622,7 @@ const calc = () => {
             const input = item.querySelector('input');
 
             if (input.checked) {
-                type = input.value;
+                choseType = input.value;
 
                 if (input.value == 'Bronze') {
                     type = bronze;
@@ -672,9 +665,18 @@ const calc = () => {
             const input = item.querySelector('input');
 
             if (input.checked) {
-                ending = input.value;
+                choseEnding = input.value;
+
+                if (input.value == 'Flat Polished Edge') {
+                    ending = flatPolishedEdge;
+                } else if (input.value == 'Beveled Edge') {
+                    ending = beveledEdge;
+                } else {
+                    ending = seamedEdge;
+                }
 
                 document.querySelector('#card-ending').innerHTML = `Ending: ${input.value}`;
+                showStepContent(3);
             }
         });
     });
@@ -683,6 +685,7 @@ const calc = () => {
 
     quantitySelect.addEventListener('change', () => {
         document.querySelector('#card-quantity').innerHTML = `Quantity: ${quantitySelect.value}`;
+        quantity = quantitySelect.value;
     });
 };
 

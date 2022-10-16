@@ -16,10 +16,14 @@ html {
         justify-content: space-between;
         align-items: center;
         h3 {
+            padding: 0;
+            margin: 0;
             text-transform: uppercase;
             font-size: 20px;
         }
         p {
+            padding: 0;
+            margin: 0;
             font-size: 16px;
         }
     }
@@ -27,6 +31,8 @@ html {
         font-size: 24px;
     }
     &__descr {
+        margin: 0;
+        padding: 0;
         font-size: 16px;
     }
     &__wrap {
@@ -157,6 +163,17 @@ html {
             text-decoration: underline;
         }
     }
+    .four__wrap {
+        display: block;
+        text-align: center;
+        textarea {
+            resize: none;
+            padding: 20px;
+            font-size: 14px;
+            width: 250px;
+            height: 350px;
+        }
+    }
     .btn {
         &__wrap {
             padding-top: 50px;
@@ -181,5 +198,69 @@ html {
     }
     &-3__title {
         margin-bottom: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .content {
+        max-width: 768px;
+    }
+    .step__wrap {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        max-width: 612px;
+    }
+    .step__wrap {
+        padding-top: 40px;
+        gap: 25px;
+    }
+    .step__descr {
+        font-size: 15px;
+    }
+    .step__title {
+        font-size: 20px;
+    }
+    &__header {
+        h3 {
+            font-size: 18px;
+        }
+        p {
+            font-size: 15px;
+        }
+    }
+    .btn__wrap {
+        padding-top: 40px;
+    }
+    .btn__prev, 
+    .btn__next {
+        font-size: 15px !important;
+    }
+    .img__wrap {
+        img {
+            max-height: 176px !important;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .step__wrap {
+        padding-top: 25px;
+        grid-template-columns: 1fr;
+    }
+    .two__wrap {
+        img {
+            max-height: 176px;
+        }
+    }
+    .three__wrap {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .step__card {
+        position: static;
     }
 }
